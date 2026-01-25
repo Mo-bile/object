@@ -2,9 +2,6 @@ package org.eternity.movie.pratice;
 
 import java.time.LocalDateTime;
 import org.eternity.money.Money;
-import org.eternity.movie.pratice.discountpolicy.AmountDiscountPolicy;
-import org.eternity.movie.pratice.discountpolicy.NoneDiscountPolicy;
-import org.eternity.movie.pratice.discountpolicy.PercentDiscountPolicy;
 
 public class Screening {
     private Movie movie;

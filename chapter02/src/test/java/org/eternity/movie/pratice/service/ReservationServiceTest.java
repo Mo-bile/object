@@ -13,7 +13,7 @@ import org.eternity.movie.pratice.Reservation;
 import org.eternity.movie.pratice.Screening;
 import org.eternity.movie.pratice.discountcondition.PeriodCondition;
 import org.eternity.movie.pratice.discountcondition.SequenceCondition;
-import org.eternity.movie.pratice.discountpolicy.AmountDiscountPolicy;
+import org.eternity.movie.pratice.discountpolicy.AmountDefaultDiscountPolicy;
 import org.eternity.movie.pratice.discountpolicy.NoneDiscountPolicy;
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class ReservationServiceTest {
             "아바타",
             Duration.ofMinutes(120),
             Money.wons(1000),
-            new AmountDiscountPolicy(Money.wons(800),
+            new AmountDefaultDiscountPolicy(Money.wons(800),
                 new SequenceCondition(1),
                 new SequenceCondition(10),
                 new PeriodCondition(
