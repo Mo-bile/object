@@ -1,12 +1,13 @@
-package org.eternity.movie.step01.pricing;
+package org.eternity.movie.pratice.discountpolicy;
 
 import org.eternity.money.Money;
-import org.eternity.movie.step01.DiscountPolicy;
-import org.eternity.movie.step01.Screening;
+import org.eternity.movie.pratice.Screening;
 
 public class NoneDiscountPolicy extends DiscountPolicy {
+
     @Override
     protected Money getDiscountAmount(Screening screening) {
         return Money.ZERO;
     }
+
 }

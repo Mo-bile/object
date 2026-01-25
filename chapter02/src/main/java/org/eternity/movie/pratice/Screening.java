@@ -2,6 +2,9 @@ package org.eternity.movie.pratice;
 
 import java.time.LocalDateTime;
 import org.eternity.money.Money;
+import org.eternity.movie.pratice.discountpolicy.AmountDiscountPolicy;
+import org.eternity.movie.pratice.discountpolicy.NoneDiscountPolicy;
+import org.eternity.movie.pratice.discountpolicy.PercentDiscountPolicy;
 
 public class Screening {
     private Movie movie;
@@ -33,5 +36,16 @@ public class Screening {
     private Money calculateFee(int audience) {
         return movie.calculateMovieFee(this).times(audience);
     }
+
+    // 분기처리 방식 (절차적 프로그래밍)
+//    private Money calculateFee(int audience) {
+//        if (movie.getDiscountPolicy() == new AmountDiscountPolicy()) {
+//
+//        } else if (movie.getDiscountPolicy() == new PercentDiscountPolicy()) {
+//
+//        } else if (movie.getDiscountPolicy() == new NoneDiscountPolicy()) {
+//
+//        }
+//    }
 
 }
