@@ -22,6 +22,7 @@ public class Movie {
     }
 
     public Money calculateMovieFee(Screening screening) {
+        // 할인금액이 0원인 사실을 결정하는 것이 여기 객체에 있음
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 }

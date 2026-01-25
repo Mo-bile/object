@@ -28,6 +28,8 @@ public class Screening {
     }
 
     public Reservation reserve(Customer customer, int audienceCount) {
+        // 순환참조 아닌지? -> 생성순환, 실행순환이 아님
+        // 이유 : 에약은 상영에 대한 정보를 들고있어야함
         return new Reservation(customer, this, calculateFee(audienceCount),
                 audienceCount);
     }
