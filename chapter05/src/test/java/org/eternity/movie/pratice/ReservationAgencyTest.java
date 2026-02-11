@@ -73,14 +73,10 @@ class ReservationAgencyTest {
 
     @Test
     void noConditionMatched_usesBaseFee() {
-        DiscountCondition condition = new DiscountCondition(5);
-
         Movie movie = new Movie(
             TITLE_NO_DISCOUNT,
             Duration.ofMinutes(120),
-            Money.wons(10_000),
-            Money.wons(1_000),
-            condition
+            Money.wons(10_000)
         );
 
         Screening screening = screening(movie, 1, LocalDateTime.of(2026, 2, 4, 11, 0));
