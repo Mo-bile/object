@@ -1,6 +1,7 @@
 package org.eternity.movie.pratice;
 
 import java.time.LocalDateTime;
+import org.eternity.money.Money;
 import org.eternity.movie.pratice.movie.Movie;
 
 public class Screening {
@@ -27,8 +28,11 @@ public class Screening {
         return movie;
     }
 
-    public boolean isMovieDiscountable() {
-        return movie.isMovieDiscountable(this);
+    public Money calculateMovieFee() {
+        if (movie.isMovieDiscountable(this)) {
+            return movie.calculateMovieFee();
+        }
+        return movie.getFee();
     }
 
 }
