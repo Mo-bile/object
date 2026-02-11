@@ -54,6 +54,44 @@ class ReservationAgencyTest {
     }
 
     @Test
+    void periodCondition_notMatched_usesBaseFee() {
+        DiscountCondition condition = new DiscountCondition(DayOfWeek.MONDAY, LocalTime.of(10, 0), LocalTime.of(12, 0));
+
+        Movie movie = new Movie(
+            "AmountDiscountWhenConditionMatched",
+            Duration.ofMinutes(120),
+            Money.wons(10_000),
+            Money.wons(1_000),
+            condition
+        );
+
+        Screening screening = screening(movie, 1, LocalDateTime.of(2026, 2, 3, 10, 30));
+
+        Reservation reservation = agency.reserve(screening, new Customer("user", "id"), 1);
+
+        assertEquals(Money.wons(10_000), reservation.getFee());
+    }
+
+    @Test
+    void sequenceCondition_notMatched_usesBaseFee() {
+        DiscountCondition condition = new DiscountCondition(2);
+
+        Movie movie = new Movie(
+            "PercentDiscountWhenConditionMatched",
+            Duration.ofMinutes(120),
+            Money.wons(10_000),
+            0.1,
+            condition
+        );
+
+        Screening screening = screening(movie, 1, LocalDateTime.of(2026, 2, 4, 14, 0));
+
+        Reservation reservation = agency.reserve(screening, new Customer("user", "id"), 1);
+
+        assertEquals(Money.wons(10_000), reservation.getFee());
+    }
+
+    @Test
     void dayOfWeekCondition_appliesNoneDiscount() {
         DiscountCondition condition = new DiscountCondition(DayOfWeek.WEDNESDAY);
 
