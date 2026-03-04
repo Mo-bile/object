@@ -17,6 +17,13 @@ public class Movie {
         this.discountPolicy = discountPolicy;
     }
 
+    public Movie(String title, Duration runningTime, Money fee) {
+        this.title = title;
+        this.runningTime = runningTime;
+        this.fee = fee;
+        this.discountPolicy = new NoneDiscountPolicy();
+    }
+
     public Money getFee() {
         return fee;
     }
